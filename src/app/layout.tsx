@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Amarante } from "next/font/google";
 import "./globals.css";
 
 // Font-variabler
@@ -12,6 +12,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const amarante = Amarante({
+  weight: "400",
+  variable: "--font-amarante",
+  subsets: ["latin"],
+})
 
 // Metadata
 export const metadata: Metadata = {
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
+        className={`${amarante.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
       >
         {children}
       </body>
