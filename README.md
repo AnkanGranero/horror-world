@@ -28,7 +28,7 @@ This project combines data from the [REST Countries API](https://restcountries.c
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/horror-world.git
+git clone https://github.com/ankangranero/horror-world.git
 cd horror-world
 npm install
 npm run dev

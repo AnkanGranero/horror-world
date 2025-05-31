@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Amarante } from "next/font/google";
 import "./globals.css";
+import { fetchCountries } from "./lib/fetchCountries";
+import CountrySelect from "./components/countrySelect";
 
-// Font-variabler
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Font-variables
 
 const amarante = Amarante({
   weight: "400",
@@ -19,25 +12,31 @@ const amarante = Amarante({
   subsets: ["latin"],
 })
 
-// Metadata
 export const metadata: Metadata = {
   title: "Horror World",
   description: "Explore top horror films by country.",
 };
 
-// Root-layout
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const countries = await fetchCountries();
   return (
     <html lang="en">
+
       <body
         className={`${amarante.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
       >
+        <header className="p-[4rem] absolute top-[20vh] w-full">
+          <h1 className="font-bold font-serif text-3xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
+          <nav className="flex justify-center p-[2rem] mt-4">
+            <CountrySelect countries={countries}></CountrySelect>
+          </nav>
+        </header>
         {children}
       </body>
-    </html>
+    </html >
   );
 }
