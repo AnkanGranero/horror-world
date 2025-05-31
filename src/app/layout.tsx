@@ -27,7 +27,7 @@ export default async function RootLayout({
     <html lang="en">
 
       <body
-        className={`${amarante.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}
+        className={`${amarante.variable} antialiased bg-black text-white min-h-screen`}
       >
         <header className="p-[4rem] absolute top-[20vh] w-full">
           <h1 className="font-bold font-serif text-3xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
