@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Amarante } from "next/font/google";
+import { Amarante } from "next/font/google";
 import "./globals.css";
-import { fetchCountries } from "./lib/fetchCountries";
-import CountrySelect from "./components/countrySelect";
+import { fetchCountries } from "@/lib/fetchCountries"
+import CountrySelect from "@/components/countrySelect";
+import { CountryProvider } from "@/contexts/countryContext";
 
 // Font-variables
 
@@ -29,13 +30,15 @@ export default async function RootLayout({
       <body
         className={`${amarante.variable} antialiased bg-black text-white min-h-screen`}
       >
-        <header className="p-[4rem] absolute top-[20vh] w-full">
-          <h1 className="font-bold font-serif text-3xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
-          <nav className="flex justify-center p-[2rem] mt-4">
-            <CountrySelect countries={countries}></CountrySelect>
-          </nav>
-        </header>
-        {children}
+        <CountryProvider>
+          <header className="p-[4rem] absolute top-[20vh] w-full">
+            <h1 className="font-bold font-serif text-3xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
+            <nav className="flex justify-center p-[2rem] mt-4">
+              <CountrySelect countries={countries}></CountrySelect>
+            </nav>
+          </header>
+          {children}
+        </CountryProvider>
       </body>
     </html >
   );
