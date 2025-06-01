@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Amarante } from "next/font/google";
 import "./globals.css";
-import { fetchCountries } from "@/lib/fetchCountries"
-import CountrySelect from "@/components/CountrySelect";
 import { CountryProvider } from "@/contexts/countryContext";
 import { MovieProvider } from "@/contexts/movieContext";
+import Header from "@/components/Header"
 
 
 // Font-variables
@@ -20,12 +19,11 @@ export const metadata: Metadata = {
   description: "Explore top horror films by country.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const countries = await fetchCountries();
   return (
     <html lang="en">
 
@@ -34,12 +32,7 @@ export default async function RootLayout({
       >
         <MovieProvider>
           <CountryProvider>
-            <header className="p-[4rem] top-[20vh] w-full">
-              <h1 className="font-bold font-serif text-3xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
-              <nav className="flex justify-center p-[2rem] mt-4">
-                <CountrySelect countries={countries}></CountrySelect>
-              </nav>
-            </header>
+            <Header />
             {children}
           </CountryProvider>
         </MovieProvider>
