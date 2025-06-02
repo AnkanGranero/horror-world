@@ -29,7 +29,7 @@ export default function CountrySelect({
           return res.json();
       })
         .then((movies) => {
-          setMovies(movies)
+          setMovies(movies.results)
           setHasSearched(true)
         })
         .catch((err) => setError(err.message))
