@@ -12,7 +12,7 @@ export const MovieProvider = ({ children }: { children: React.ReactNode }) => {
     const [hasSearched, setHasSearched] = useState(false);
 
     return (
-        <MovieContext.Provider value={{ movies, setMovies, isLoading, error, setError, hasSearched, setHasSearched }}>
+        <MovieContext.Provider value={{ movies, setMovies, isLoading, setIsLoading, error, setError, hasSearched, setHasSearched }}>
             {children}
         </MovieContext.Provider>
     );

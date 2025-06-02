@@ -2,14 +2,9 @@
 import { useCountry } from "@/contexts/countryContext";
 import { Country } from "../types/country";
 import { useEffect } from "react";
-import { fetchHorrorMoviesByCountry } from "@/lib/fetchMovies"
 import { useMovies } from "@/contexts/movieContext"
 
-type Props = {
-  countries: Country[];
-};
-
-export default function CountrySelect({
+export default function SelectCountry({
   countries,
 }: {
   countries: Country[];
@@ -24,16 +19,19 @@ export default function CountrySelect({
   }
   useEffect(() => {
     if (selectedCountry?.cca2) {
-      fetchHorrorMoviesByCountry(selectedCountry.cca2)
+      fetch(`/api/movies?region=${selectedCountry.cca2}`)
+      .then(res => {
+        if(!res.ok) throw new Error("Failed to fetch movies")
+          return res.json();
+      })
         .then((movies) => {
-          setMovies(movies)
+          setMovies(movies.results)
           setHasSearched(true)
         })
         .catch((err) => setError(err.message))
-        .finally
 
     }
-  }, [selectedCountry]);
+  }, [selectedCountry, setMovies, setHasSearched, setError]);
 
   return (
     <select
