@@ -32,7 +32,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
 
   return (
     <>
-      <div
+      <article
         className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs cursor-pointer"
         onClick={handleClick}
       >
@@ -41,7 +41,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           alt={movie.title}
           className="w-full h-auto"
         />
-        <div className="p-4">
+        <section className="p-4">
           <h3 className="text-lg text-black font-semibold">{movie.title}</h3>
 
           {isMobile && expanded && !loading && (
@@ -60,8 +60,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               )}
             </>
           )}
-        </div>
-      </div>
+        </section>
+      </article>
 
       {!isMobile && showModal && (
         <MovieModal
