@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Movie } from "@/types/movie";
-import { fetchMovieDetails } from "@/lib/fetchMovieDetails";
 import MovieModal from "@/components/MovieModal";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -17,7 +16,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     
     if (!details) {
       setLoading(true);
-      fetchMovieDetails(movie.id)
+      fetch(`/api/movie-details?id=${movie.id}`)
+      .then(res => {
+        if(!res.ok) throw new Error("Failed to fetch movie details");
+        return res.json();
+      })
         .then((data) => setDetails(data))
         .finally(() => setLoading(false));
     }
