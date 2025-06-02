@@ -55,7 +55,7 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
 
                 {isLoading ? (
                     <p className="text-gray-500 mt-4">Loading details...</p>
-                ) : (
+                ) : details && (
                     <>
                         <p className="mt-2 text-gray-700">{details?.overview}</p>
 
