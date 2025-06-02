@@ -14,10 +14,10 @@ export default function MovieList() {
     if (movies.length === 0) return <p className="text-white text-xl">No horror movies found from this country.</p>;
 
     return (
-        <div className="flex flex-wrap gap-6 justify-center">
+        <ul className="flex flex-wrap gap-6 justify-center">
             {movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
+                <li key={movie.id}><MovieCard key={movie.id} movie={movie} /></li>
             ))}
-        </div>
+        </ul>
     );
 }
