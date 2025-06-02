@@ -29,10 +29,9 @@ export default function SelectCountry({
           setHasSearched(true)
         })
         .catch((err) => setError(err.message))
-        .finally
 
     }
-  }, [selectedCountry]);
+  }, [selectedCountry, setMovies, setHasSearched, setError]);
 
   return (
     <select

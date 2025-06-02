@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import { Movie } from "@/types/movie"
+import { Movie, MovieDetails } from "@/types/movie"
+import Image from "next/image"
 
 type Props = {
     movie: Movie;
-    details: any; // optional: make MovieDetails type
+    details?: null | MovieDetails
     isLoading: boolean;
     onClose: () => void;
 };
@@ -42,10 +43,12 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
                     ✕
                 </button>
 
-                <img
+                <Image
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                     className="rounded"
+                    height="750"
+                    width="500"
                 />
 
                 <h2 id="modal-title" className="text-xl text-black font-bold mt-4">{movie.title}</h2>
@@ -59,8 +62,8 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
                         {details?.production_countries?.length > 0 && (
                             <p className="text-sm text-gray-500 mt-4">
                                 Production countries:{" "}
-                                {details.production_countries.map((c: any, i: number) => (
-                                    <span key={c.iso_3166_1}>
+                                {details.production_countries.map((c: { name: string }, i: number) => (
+                                    <span key={c.name}>
                                         {c.name}
                                         {i < details.production_countries.length - 1 && ", "}
                                     </span>
