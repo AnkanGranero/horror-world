@@ -33,11 +33,11 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
             className="fixed inset-0 bg-black/80 flex justify-center items-center z-50 px-4">
             <div
                 ref={modalRef}
-                className="bg-white p-6 rounded-xl max-w-md w-full relative shadow-xl"
+                className="bg-white rounded-xl max-w-md w-full relative"
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-2 right-3 text-black text-xl hover:scale-110 transition-transform"
+                    className="absolute top-2 right-3 text-white text-xl hover:scale-130 cursor-pointer"
                     aria-label="Close modal"
                 >
                     ✕
@@ -50,28 +50,31 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
                     height="750"
                     width="500"
                 />
+                <section className="px-6 pb-6">
 
-                <h2 id="modal-title" className="text-xl text-black font-bold mt-4">{movie.title}</h2>
 
-                {isLoading ? (
-                    <p className="text-gray-500 mt-4">Loading details...</p>
-                ) : details && (
-                    <>
-                        <p className="mt-2 text-gray-700">{details?.overview}</p>
+                    <h2 id="modal-title" className="text-xl text-black font-bold mt-4">{movie.title}</h2>
 
-                        {details?.production_countries?.length > 0 && (
-                            <p className="text-sm text-gray-500 mt-4">
-                                Production countries:{" "}
-                                {details.production_countries.map((c: { name: string }, i: number) => (
-                                    <span key={c.name}>
-                                        {c.name}
-                                        {i < details.production_countries.length - 1 && ", "}
-                                    </span>
-                                ))}
-                            </p>
-                        )}
-                    </>
-                )}
+                    {isLoading ? (
+                        <p className="text-gray-500 mt-4">Loading details...</p>
+                    ) : details && (
+                        <>
+                            <p className="mt-2 text-gray-700">{details?.overview}</p>
+
+                            {details?.production_countries?.length > 0 && (
+                                <p className="text-sm text-gray-500 mt-4">
+                                    Production countries:{" "}
+                                    {details.production_countries.map((c: { name: string }, i: number) => (
+                                        <span key={c.name}>
+                                            {c.name}
+                                            {i < details.production_countries.length - 1 && ", "}
+                                        </span>
+                                    ))}
+                                </p>
+                            )}
+                        </>
+                    )}
+                </section>
             </div>
         </div>
     );

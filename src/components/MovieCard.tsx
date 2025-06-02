@@ -37,7 +37,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   return (
     <>
       <article
-        className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-xs cursor-pointer"
+        className="bg-white rounded-lg overflow-hidden w-full max-w-xs cursor-pointer"
         onClick={handleClick}
       >
         <Image
@@ -45,9 +45,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           alt={movie.title}
           width="500"
           height="750"
-          className="w-full h-auto"
+          className="h-full md:h-[30rem] object-cover"
         />
-        <section className="p-4">
+        <section className="p-4 md:h-[5rem]">
           <h3 className="text-lg text-black font-semibold">{movie.title}</h3>
 
           {isMobile && expanded && !loading && details && (
