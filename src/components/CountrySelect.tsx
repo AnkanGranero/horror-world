@@ -4,10 +4,6 @@ import { Country } from "../types/country";
 import { useEffect } from "react";
 import { useMovies } from "@/contexts/movieContext"
 
-type Props = {
-  countries: Country[];
-};
-
 export default function CountrySelect({
   countries,
 }: {
