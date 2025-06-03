@@ -33,7 +33,7 @@ export default function SelectCountry({
       <select
         value={selectedCountry?.cca2 ?? ""}
         onChange={handleChange}
-        className="text-black text-xl md:text-2xl px-4 py-4 rounded bg-white max-w-[15rem] md:max-w-[20rem] max-h-60 overflow-y-auto"
+        className="text-black text-[1rem] md:text-2xl px-4 py-4 rounded bg-white max-w-[15rem] md:max-w-[20rem] max-h-60 overflow-y-auto truncate"
       >
         <option value="">Pick a country</option>
         {countries.map((country) => (

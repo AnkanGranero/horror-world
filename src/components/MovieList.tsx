@@ -31,9 +31,9 @@ export default function MovieList() {
     }, [selectedCountry]);
 
     if (!hasSearched) return null;
-    if (loading) return <p className="text-white text-xl">Loading movies...</p>;
-    if (error) return <p className="text-red-500 text-xl">Something went wrong: {error}</p>;
-    if (movies.length === 0) return <p className="text-white text-xl">No horror movies found from this country.</p>;
+    if (loading) return <p className="text-white text-xl md:text-4xl px-8 md:mt-[5%]">Loading movies...</p>;
+    if (error) return <p className="text-red-500 text-xl md:text-4xl px-8 md:mt-[5%]">Something went wrong: {error}</p>;
+    if (movies.length === 0) return <p className="text-white text-xl md:text-4xl px-8 md:mt-[5%]">No horror movies found from this country.</p>;
 
     return (
         <ul className="flex flex-wrap gap-6 justify-center">
