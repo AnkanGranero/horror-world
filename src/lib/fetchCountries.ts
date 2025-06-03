@@ -3,8 +3,8 @@ export async function fetchCountries() {
     const res = await fetch("https://restcountries.com/v3.1/all");
     if (!res.ok) throw new Error("Failed to fetch countries");
 
-    const data = await res.json();
+    const data: Country[] = await res.json();
 
-    return data.sort((a: Country, b: Country) =>
+    return data.sort((a, b) =>
         a.name.common.localeCompare(b.name.common))
 }

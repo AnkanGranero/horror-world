@@ -1,15 +1,37 @@
 "use client"
 
 import MovieCard from "@/components/MovieCard"
-import { useMovies } from "@/contexts/movieContext";
+import { useEffect, useState } from "react";
+import { Movie } from "@/types/movie"
+import { useCountry } from "@/contexts/countryContext"
+import { fetchMovies } from "@/lib/fetchMovies"
 
 
 export default function MovieList() {
 
-    const { movies, isLoading, error, hasSearched } = useMovies();
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
+    const [error, setError] = useState();
+    const { selectedCountry } = useCountry();
+
+    useEffect(() => {
+        if (!selectedCountry?.cca2) return;
+
+        setLoading(true);
+        setError(undefined);
+
+        fetchMovies(selectedCountry)
+            .then((movies) => setMovies(movies))
+            .catch((err) => setError(err.message))
+            .finally(() => {
+                setLoading(false);
+                setHasSearched(true)
+            })
+    }, [selectedCountry]);
 
     if (!hasSearched) return null;
-    if (isLoading) return <p className="text-white text-xl">Loading movies...</p>;
+    if (loading) return <p className="text-white text-xl">Loading movies...</p>;
     if (error) return <p className="text-red-500 text-xl">Something went wrong: {error}</p>;
     if (movies.length === 0) return <p className="text-white text-xl">No horror movies found from this country.</p>;
 
