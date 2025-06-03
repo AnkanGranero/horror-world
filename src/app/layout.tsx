@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Amarante } from "next/font/google";
 import "./globals.css";
 import { CountryProvider } from "@/contexts/countryContext";
-import { MovieProvider } from "@/contexts/movieContext";
 import Header from "@/components/Header"
 
 
@@ -30,12 +29,10 @@ export default function RootLayout({
       <body
         className={`${amarante.variable} antialiased bg-black text-white min-h-screen`}
       >
-        <MovieProvider>
           <CountryProvider>
             <Header />
             {children}
           </CountryProvider>
-        </MovieProvider>
       </body>
     </html >
   );
