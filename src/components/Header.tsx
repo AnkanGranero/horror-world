@@ -18,9 +18,9 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="p-[4rem] top-[20vh] w-full">
+    <header className="p-[4rem] pb-0 top-[20vh] w-full">
       <h1 className="font-bold font-serif text-6xl md:text-9xl text-warm text-center glow">HORROR WORLD</h1>
-      <nav className="flex justify-center p-[2rem] mt-4">
+      <nav className="flex justify-center p-[2rem] pb-[1rem] mt-4">
         {
           error ? (
             <p className="text-red-500">{error}</p>
