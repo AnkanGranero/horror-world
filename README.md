@@ -10,7 +10,7 @@ This project combines data from the [REST Countries API](https://restcountries.c
 
 - Select any country from a searchable list
 - Display its flag, region, and other key facts
-- Fetch top-rated horror movies associated with that country
+- Fetch horror movies produced in that country
 
 ---
 
