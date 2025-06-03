@@ -34,7 +34,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   return (
     <>
       <article
-        className="bg-white rounded-lg overflow-hidden w-full max-w-xs cursor-pointer"
+        className="bg-white rounded-lg overflow-hidden w-full max-w-xs cursor-pointer animate-[fadeInGrowSubtle_0.6s_ease-out_forwards]"
         onClick={handleClick}
       >
         <Image

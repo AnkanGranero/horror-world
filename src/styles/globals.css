@@ -32,3 +32,38 @@ body {
   color: var(--foreground);
   font-family: var(--font-special-elite), Arial, Helvetica, sans-serif;
 }
+
+/* animations */
+@keyframes fadeInGrowSubtle {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInGrow {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
