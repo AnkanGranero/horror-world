@@ -5,6 +5,7 @@ import { Movie, MovieDetails } from "@/types/movie";
 import MovieModal from "@/components/MovieModal";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import Image from "next/image";
+import { fetchMovieDetails } from "@/lib/fetchMovieDetails";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   const isMobile = useIsMobile();
@@ -17,13 +18,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
 
     if (!details) {
       setLoading(true);
-      fetch(`/api/movie-details?id=${movie.id}`)
-        .then(res => {
-          if (!res.ok) throw new Error("Failed to fetch movie details");
-          return res.json();
-        })
+      fetchMovieDetails(movie.id)
         .then((data) => setDetails(data))
-        .finally(() => setLoading(false));
+        .finally(() => setLoading(false))
     }
     if (isMobile) {
       setExpanded((prev) => !prev);

@@ -4,6 +4,7 @@ import MovieCard from "@/components/MovieCard"
 import { useEffect, useState } from "react";
 import { Movie } from "@/types/movie"
 import { useCountry } from "@/contexts/countryContext"
+import { fetchMovies } from "@/lib/fetchMovies"
 
 
 export default function MovieList() {
@@ -15,25 +16,19 @@ export default function MovieList() {
     const { selectedCountry } = useCountry();
 
     useEffect(() => {
-        if (selectedCountry?.cca2) {
-            setLoading(true)
-            fetch(`/api/movies?region=${selectedCountry.cca2}`)
-                .then(res => {
-                    if (!res.ok) throw new Error("Failed to fetch movies")
-                    return res.json();
-                })
-                .then((data) => {
-                    setMovies(data.results)
+        if (!selectedCountry?.cca2) return;
 
-                })
-                .catch((err) => setError(err.message))
-                .finally(() => {
-                    setLoading(false)
-                    setHasSearched(true)
-                }
-                )
-        }
-    }, [selectedCountry, setMovies, setError, setLoading]);
+        setLoading(true);
+        setError(undefined);
+
+        fetchMovies(selectedCountry)
+            .then((movies) => setMovies(movies))
+            .catch((err) => setError(err.message))
+            .finally(() => {
+                setLoading(false);
+                setHasSearched(true)
+            })
+    }, [selectedCountry]);
 
     if (!hasSearched) return null;
     if (loading) return <p className="text-white text-xl">Loading movies...</p>;
