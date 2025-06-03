@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Amarante } from "next/font/google";
+import { Amarante, Special_Elite } from "next/font/google";
 import "./globals.css";
 import { CountryProvider } from "@/contexts/countryContext";
 import Header from "@/components/Header"
@@ -12,6 +12,12 @@ const amarante = Amarante({
   variable: "--font-amarante",
   subsets: ["latin"],
 })
+
+const specialElite = Special_Elite({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-special-elite",
+});
 
 export const metadata: Metadata = {
   title: "Horror World",
@@ -27,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body
-        className={`${amarante.variable} antialiased bg-black text-white min-h-screen`}
+        className={`${amarante.variable} ${ specialElite.variable} antialiased bg-black text-white min-h-screen`}
       >
           <CountryProvider>
             <Header />
