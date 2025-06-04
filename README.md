@@ -32,3 +32,14 @@ git clone https://github.com/ankangranero/horror-world.git
 cd horror-world
 npm install
 npm run dev
+```
+
+🔑 API Key Required
+To fetch movie data, you’ll need your own API key from TMDb.
+Create a (free) account, generate an API key, and add it to your .env.local file like this:
+
+
+```env
+# .env.local
+TMDB_API_KEY=your_api_key_here
+```
