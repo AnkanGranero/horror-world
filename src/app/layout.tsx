@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body
-        className={`${amarante.variable} ${specialElite.variable} antialiased bg-black text-white min-h-screen`}
+        className={`${amarante.variable} ${specialElite.className} antialiased bg-black text-white min-h-screen`}
       >
         <CountryProvider>
           <Header/>
