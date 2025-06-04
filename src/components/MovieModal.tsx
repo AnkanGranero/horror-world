@@ -35,7 +35,7 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
             className="fixed inset-0 bg-black/80 flex justify-center items-start z-50 px-4 overflow-y-auto">
             <div
                 ref={modalRef}
-                className="bg-white rounded-xl max-w-md w-full relative animate-[fadeInGrow_0.6s_ease_forwards] my-[4rem] "
+                className="bg-white rounded-xl max-w-md w-full relative animate-[fadeInGrow_0.3s_ease_forwards] my-[4rem] "
             >
                 <button
                     onClick={onClose}
