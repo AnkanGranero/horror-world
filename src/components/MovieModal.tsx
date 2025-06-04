@@ -18,10 +18,12 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
                 onClose();
             }
         };
-
         window.addEventListener("mousedown", handleClickOutside);
+        document.body.style.overflow = "hidden";
         return () => {
             window.removeEventListener("mousedown", handleClickOutside);
+            document.body.style.removeProperty("overflow");;
+
         };
     }, [onClose]);
 
@@ -30,10 +32,10 @@ export default function MovieModal({ movie, details, isLoading, onClose }: Props
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
-            className="fixed inset-0 bg-black/80 flex justify-center items-center z-50 px-4">
+            className="fixed inset-0 bg-black/80 flex justify-center items-start z-50 px-4 overflow-y-auto">
             <div
                 ref={modalRef}
-                className="bg-white rounded-xl max-w-md w-full relative animate-[fadeInGrow_0.6s_ease_forwards]"
+                className="bg-white rounded-xl max-w-md w-full relative animate-[fadeInGrow_0.6s_ease_forwards] my-[4rem] "
             >
                 <button
                     onClick={onClose}
