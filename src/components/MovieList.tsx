@@ -20,13 +20,13 @@ export default function MovieList() {
 
         setLoading(true);
         setError(undefined);
+        setHasSearched(true)
 
         fetchMovies(selectedCountry)
             .then((movies) => setMovies(movies))
             .catch((err) => setError(err.message))
             .finally(() => {
                 setLoading(false);
-                setHasSearched(true)
             })
     }, [selectedCountry]);
 
