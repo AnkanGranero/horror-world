@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className="opacity-0 p-[4rem] pb-0 top-[20vh] w-full animate-[fadeInGrowSubtle_1.5s_ease_forwards]">
-      <h1 className="font-bold font-serif text-6xl md:text-9xl text-warm text-center glow ">HORROR WORLD</h1>
+      <h1 className="font-bold font-serif text-6xl md:text-9xl text-warm-red text-center glow">HORROR WORLD</h1>
       <nav className="flex justify-center p-[2rem] pb-[0.8rem] mt-4">
         {
           error ? (
