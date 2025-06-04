@@ -11,7 +11,7 @@ export default function MovieList() {
 
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState(false);
-    const [hasSearched, setHasSearched] = useState(false);
+    const [beginSearch, setBeginSearch] = useState(false);
     const [error, setError] = useState();
     const { selectedCountry } = useCountry();
 
@@ -20,17 +20,17 @@ export default function MovieList() {
 
         setLoading(true);
         setError(undefined);
+        setBeginSearch(true)
 
         fetchMovies(selectedCountry)
             .then((movies) => setMovies(movies))
             .catch((err) => setError(err.message))
             .finally(() => {
                 setLoading(false);
-                setHasSearched(true)
             })
     }, [selectedCountry]);
 
-    if (!hasSearched) return null;
+    if (!beginSearch) return null;
     if (loading) return <p className="text-white text-xl md:text-4xl px-8 md:mt-[5%]">Loading movies...</p>;
     if (error) return <p className="text-red-500 text-xl md:text-4xl px-8 md:mt-[5%]">Something went wrong: {error}</p>;
     if (movies.length === 0) return <p className="text-white text-xl md:text-4xl px-8 md:mt-[5%]">No horror movies found from this country.</p>;
