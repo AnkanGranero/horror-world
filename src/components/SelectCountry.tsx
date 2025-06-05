@@ -25,7 +25,7 @@ export default function SelectCountry({
         <Image
           src={selectedCountry.flags.svg}
           alt={`Flag of ${selectedCountry.name.common}`}
-          className="w-[6rem] h-auto mx-[4rem] object-cover rounded opacity-90"
+          className="w-[6rem] h-auto object-cover rounded opacity-90"
           height={1000}
           width={1500}
         />
@@ -33,7 +33,7 @@ export default function SelectCountry({
       <select
         value={selectedCountry?.cca2 ?? ""}
         onChange={handleChange}
-        className="text-black text-[1rem] md:text-2xl px-4 py-4 rounded bg-white max-w-[15rem] md:max-w-[20rem] max-h-60 overflow-y-auto truncate"
+        className="w-[15rem] md:w-[20rem] text-black text-[1rem] md:text-2xl px-4 py-4 rounded bg-white h-[3rem] overflow-y-auto truncate"
       >
         <option value="">Pick a country</option>
         {countries.map((country) => (
@@ -46,7 +46,7 @@ export default function SelectCountry({
         <Image
           src={selectedCountry.flags.svg}
           alt={`Flag of ${selectedCountry.name.common}`}
-          className="mt-[3rem] md:mt-0 w-[7rem] md:w-[6rem] h-auto mx-[4rem] object-cover rounded opacity-90"
+          className="mt-[3rem] md:mt-0 w-[7rem] md:w-[6rem] h-auto object-cover rounded opacity-90"
           height={1000}
           width={1500}
         />
